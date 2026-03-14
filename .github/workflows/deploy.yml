@@ -9,21 +9,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      name: Install dependencies
-      run: npm Install
+      - name: Install dependencies
+        run: npm Install
 
-      name: Deploy to server
-      uses: appleboy/ssh-action@v1
-      with:
-        host: ${{secrets.SERVER_IP}}
-        username: ${{secrets.USER_NAME}}
-        key: ${{secrets.SERVER_SSH_KEY}}
-        script: |
-          cd /projects/my-apps/secure_account_management/backend/SecureAccounManagement/backend
-          git pull origin main
-          npm install
-          pm2 restart index
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{secrets.SERVER_IP}}
+          username: ${{secrets.USER_NAME}}
+          key: ${{secrets.SERVER_SSH_KEY}}
+          script: |
+            cd /projects/my-apps/secure_account_management/backend/SecureAccounManagement/backend
+            git pull origin main
+            npm install
+            pm2 restart index
 
