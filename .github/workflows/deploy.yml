@@ -22,7 +22,7 @@ jobs:
           username: ${{secrets.USER_NAME}}
           key: ${{secrets.SERVER_SSH_KEY}}
           script: |
-            cd /projects/my-apps/secure_account_management/backend/SecureAccounManagement/backend
+            cd /projects/my-apps/secure_account_management/backend/SecureAccounManagement/backend/
             git pull origin main
             npm install
             pm2 restart index
